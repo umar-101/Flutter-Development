@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trading_app/Widgets/currency_pair.dart';
+import 'package:trading_app/Widgets/app_bar.dart';
 
 class CurrencyPairScreen extends StatefulWidget {
   CurrencyPairScreen({Key key}) : super(key: key);
@@ -13,34 +14,9 @@ class _CurrencyPairScreenState extends State<CurrencyPairScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFFCE2E),
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
-        title: const Text('Currency Exposure Calculator'),
-        centerTitle: true,
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 17.0, horizontal: 20.0),
-            child: Text(
-              'Clear',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: MainAppBar(),
       ),
       body: Column(
         children: [

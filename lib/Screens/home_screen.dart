@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trading_app/Screens/currencypair_screen.dart';
 import 'constants.dart';
 import 'package:trading_app/Screens/settings.dart';
+import 'package:trading_app/Widgets/app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,34 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFFCE2E),
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
-        title: const Text('Currency Exposure Calculator'),
-        centerTitle: true,
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(0.0, 17.0, 10.0, 17.0),
-            child: Text(
-              'Clear',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: MainAppBar(),
       ),
       drawer: Drawer(
         child: ListView(
@@ -52,7 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10.0, vertical: 30.0),
                 child: Text(
-                  'Currency Exposure\n Calculator',
+                  'Currency Exposure Calculator',
+                  maxLines: 2,
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
